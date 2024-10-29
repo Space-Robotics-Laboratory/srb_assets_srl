@@ -36,7 +36,7 @@ To use a procedural pipeline inside Blender GUI, follow these steps:
 
 #### Generate Assets using Standalone Scripts
 
-Procedural assets can also be generated using standalone scripts that require close integration with Blender's Python API `bpy`. You can either write your own script that performs the steps outlined above or use the [procgen_assets.py](https://github.com/AndrejOrsula/space_robotics_bench/blob/main/scripts/blender/procgen_assets.py) as a starting point.
+Procedural assets can also be generated using standalone scripts that require close integration with Blender's Python API `bpy`. You can either write your own script that performs the steps outlined above or use the [`procgen_assets.py`](scripts/blender/procgen_assets.py) as a starting point. This script provides an automated pipeline for generating procedural 3D models with baked textures into one of many supported formats (ABC, FBX, GLTF, OBJ, PLY, SDF, STL, USD).
 
 ## Attributions
 
