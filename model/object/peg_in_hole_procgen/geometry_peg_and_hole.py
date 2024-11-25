@@ -1,4 +1,5 @@
 import bpy
+import mathutils
 
 
 # initialize _get_parallel_vectors node group
@@ -9,6 +10,7 @@ def _get_parallel_vectors_node_group():
 
     _get_parallel_vectors.color_tag = "NONE"
     _get_parallel_vectors.description = ""
+    _get_parallel_vectors.default_group_node_width = 140
 
     # _get_parallel_vectors interface
     # Socket output_x
@@ -145,6 +147,7 @@ def _decimate_planar_node_group():
 
     _decimate_planar.color_tag = "NONE"
     _decimate_planar.description = ""
+    _decimate_planar.default_group_node_width = 140
 
     _decimate_planar.is_modifier = True
 
@@ -241,9 +244,11 @@ def _decimate_planar_node_group():
     # node Reroute
     reroute = _decimate_planar.nodes.new("NodeReroute")
     reroute.name = "Reroute"
+    reroute.socket_idname = "NodeSocketGeometry"
     # node Reroute.001
     reroute_001 = _decimate_planar.nodes.new("NodeReroute")
     reroute_001.name = "Reroute.001"
+    reroute_001.socket_idname = "NodeSocketGeometry"
     # node Compare
     compare = _decimate_planar.nodes.new("FunctionNodeCompare")
     compare.name = "Compare"
@@ -285,6 +290,7 @@ def _decimate_planar_node_group():
     # node Reroute.002
     reroute_002 = _decimate_planar.nodes.new("NodeReroute")
     reroute_002.name = "Reroute.002"
+    reroute_002.socket_idname = "NodeSocketGeometry"
     # node Mesh Line
     mesh_line = _decimate_planar.nodes.new("GeometryNodeMeshLine")
     mesh_line.name = "Mesh Line"
@@ -394,12 +400,15 @@ def _decimate_planar_node_group():
     # node Reroute.003
     reroute_003 = _decimate_planar.nodes.new("NodeReroute")
     reroute_003.name = "Reroute.003"
+    reroute_003.socket_idname = "NodeSocketGeometry"
     # node Reroute.004
     reroute_004 = _decimate_planar.nodes.new("NodeReroute")
     reroute_004.name = "Reroute.004"
+    reroute_004.socket_idname = "NodeSocketGeometry"
     # node Reroute.005
     reroute_005 = _decimate_planar.nodes.new("NodeReroute")
     reroute_005.name = "Reroute.005"
+    reroute_005.socket_idname = "NodeSocketGeometry"
     # node Evaluate at Index
     evaluate_at_index = _decimate_planar.nodes.new("GeometryNodeFieldAtIndex")
     evaluate_at_index.name = "Evaluate at Index"
@@ -448,6 +457,7 @@ def _decimate_planar_node_group():
     # node Reroute.006
     reroute_006 = _decimate_planar.nodes.new("NodeReroute")
     reroute_006.name = "Reroute.006"
+    reroute_006.socket_idname = "NodeSocketGeometry"
     # node Spline Parameter
     spline_parameter = _decimate_planar.nodes.new("GeometryNodeSplineParameter")
     spline_parameter.name = "Spline Parameter"
@@ -518,6 +528,7 @@ def _decimate_planar_node_group():
     # node Reroute.007
     reroute_007 = _decimate_planar.nodes.new("NodeReroute")
     reroute_007.name = "Reroute.007"
+    reroute_007.socket_idname = "NodeSocketGeometry"
     # node Math.004
     math_004 = _decimate_planar.nodes.new("ShaderNodeMath")
     math_004.name = "Math.004"
@@ -940,6 +951,7 @@ def peg_node_group():
 
     peg.color_tag = "NONE"
     peg.description = ""
+    peg.default_group_node_width = 140
 
     peg.is_modifier = True
 
@@ -1074,7 +1086,7 @@ def peg_node_group():
     taper_factor_max_socket = peg.interface.new_socket(
         name="taper_factor_max", in_out="INPUT", socket_type="NodeSocketFloat"
     )
-    taper_factor_max_socket.default_value = 0.25
+    taper_factor_max_socket.default_value = 0.0
     taper_factor_max_socket.min_value = 0.0
     taper_factor_max_socket.max_value = 0.9990000128746033
     taper_factor_max_socket.subtype = "FACTOR"
@@ -1255,6 +1267,7 @@ def peg_node_group():
     reroute_1 = peg.nodes.new("NodeReroute")
     reroute_1.label = "is_circle"
     reroute_1.name = "Reroute"
+    reroute_1.socket_idname = "NodeSocketBool"
     # node Math
     math_2 = peg.nodes.new("ShaderNodeMath")
     math_2.name = "Math"
@@ -1543,23 +1556,29 @@ def peg_node_group():
     reroute_001_1 = peg.nodes.new("NodeReroute")
     reroute_001_1.label = "Radius"
     reroute_001_1.name = "Reroute.001"
+    reroute_001_1.socket_idname = "NodeSocketFloat"
     # node Reroute.002
     reroute_002_1 = peg.nodes.new("NodeReroute")
     reroute_002_1.name = "Reroute.002"
+    reroute_002_1.socket_idname = "NodeSocketInt"
     # node Reroute.003
     reroute_003_1 = peg.nodes.new("NodeReroute")
     reroute_003_1.label = "Vertices"
     reroute_003_1.name = "Reroute.003"
+    reroute_003_1.socket_idname = "NodeSocketInt"
     # node Reroute.004
     reroute_004_1 = peg.nodes.new("NodeReroute")
     reroute_004_1.label = "Height"
     reroute_004_1.name = "Reroute.004"
+    reroute_004_1.socket_idname = "NodeSocketFloat"
     # node Reroute.005
     reroute_005_1 = peg.nodes.new("NodeReroute")
     reroute_005_1.name = "Reroute.005"
+    reroute_005_1.socket_idname = "NodeSocketFloat"
     # node Reroute.006
     reroute_006_1 = peg.nodes.new("NodeReroute")
     reroute_006_1.name = "Reroute.006"
+    reroute_006_1.socket_idname = "NodeSocketFloat"
     # node Math.003
     math_003_1 = peg.nodes.new("ShaderNodeMath")
     math_003_1.name = "Math.003"
@@ -1634,10 +1653,19 @@ def peg_node_group():
     reroute_007_1 = peg.nodes.new("NodeReroute")
     reroute_007_1.label = "Circumference"
     reroute_007_1.name = "Reroute.007"
+    reroute_007_1.socket_idname = "NodeSocketFloat"
     # node Reroute.008
     reroute_008 = peg.nodes.new("NodeReroute")
     reroute_008.label = "Vertex per meter"
     reroute_008.name = "Reroute.008"
+    reroute_008.socket_idname = "NodeSocketFloat"
+    # node Set Material
+    set_material = peg.nodes.new("GeometryNodeSetMaterial")
+    set_material.name = "Set Material"
+    # Selection
+    set_material.inputs[1].default_value = True
+    if "Metal" in bpy.data.materials:
+        set_material.inputs[2].default_value = bpy.data.materials["Metal"]
 
     # Set parents
     switch.parent = frame_1
@@ -1716,7 +1744,7 @@ def peg_node_group():
     group_input_006.location = (-891.415771484375, -528.1066284179688)
     random_value_003.location = (-645.774658203125, -292.082275390625)
     group_input_007.location = (-891.415771484375, -39.57568359375)
-    group_output_2.location = (1099.36865234375, 331.6226806640625)
+    group_output_2.location = (1192.8258056640625, 334.2099914550781)
     set_shade_smooth.location = (41.69342041015625, 308.8958740234375)
     integer_003.location = (-891.415771484375, -433.10662841796875)
     transform_geometry.location = (-1027.566650390625, -12.72100830078125)
@@ -1752,6 +1780,7 @@ def peg_node_group():
     math_008.location = (-1586.1864013671875, 121.13839721679688)
     reroute_007_1.location = (-1719.8779296875, 7.324859619140625)
     reroute_008.location = (-1394.48095703125, 87.21310424804688)
+    set_material.location = (1014.396484375, 335.28179931640625)
 
     # Set dimensions
     frame_1.width, frame_1.height = 686.0, 584.0
@@ -1817,6 +1846,7 @@ def peg_node_group():
     math_008.width, math_008.height = 140.0, 100.0
     reroute_007_1.width, reroute_007_1.height = 16.0, 100.0
     reroute_008.width, reroute_008.height = 16.0, 100.0
+    set_material.width, set_material.height = 140.0, 100.0
 
     # initialize peg links
     # group_input_003.random_seed -> random_value_001.Seed
@@ -1883,8 +1913,8 @@ def peg_node_group():
     peg.links.new(reroute_002_1.outputs[0], cone.inputs[0])
     # reroute_006_1.Output -> math_002_1.Value
     peg.links.new(reroute_006_1.outputs[0], math_002_1.inputs[0])
-    # scale_elements.Geometry -> group_output_2.Geometry
-    peg.links.new(scale_elements.outputs[0], group_output_2.inputs[0])
+    # set_material.Geometry -> group_output_2.Geometry
+    peg.links.new(set_material.outputs[0], group_output_2.inputs[0])
     # integer_002.Integer -> random_value_002.ID
     peg.links.new(integer_002.outputs[0], random_value_002.inputs[7])
     # group_input_005.random_seed -> random_value_002.Seed
@@ -1959,6 +1989,8 @@ def peg_node_group():
     peg.links.new(reroute_004_1.outputs[0], reroute_005_1.inputs[0])
     # math_008.Value -> reroute_008.Input
     peg.links.new(math_008.outputs[0], reroute_008.inputs[0])
+    # scale_elements.Geometry -> set_material.Geometry
+    peg.links.new(scale_elements.outputs[0], set_material.inputs[0])
     return peg
 
 
@@ -1971,6 +2003,7 @@ def hole_node_group():
 
     hole.color_tag = "NONE"
     hole.description = ""
+    hole.default_group_node_width = 140
 
     hole.is_modifier = True
 
@@ -2304,28 +2337,35 @@ def hole_node_group():
     reroute_2 = hole.nodes.new("NodeReroute")
     reroute_2.label = "peg_pull_direction"
     reroute_2.name = "Reroute"
+    reroute_2.socket_idname = "NodeSocketVector"
     # node Reroute.001
     reroute_001_2 = hole.nodes.new("NodeReroute")
     reroute_001_2.label = "hole_position"
     reroute_001_2.name = "Reroute.001"
+    reroute_001_2.socket_idname = "NodeSocketVector"
     # node Reroute.002
     reroute_002_2 = hole.nodes.new("NodeReroute")
     reroute_002_2.name = "Reroute.002"
+    reroute_002_2.socket_idname = "NodeSocketVector"
     # node Reroute.003
     reroute_003_2 = hole.nodes.new("NodeReroute")
     reroute_003_2.label = "hole_position"
     reroute_003_2.name = "Reroute.003"
+    reroute_003_2.socket_idname = "NodeSocketVector"
     # node Reroute.006
     reroute_006_2 = hole.nodes.new("NodeReroute")
     reroute_006_2.name = "Reroute.006"
+    reroute_006_2.socket_idname = "NodeSocketVector"
     # node Reroute.007
     reroute_007_2 = hole.nodes.new("NodeReroute")
     reroute_007_2.label = "peg_insert_direction"
     reroute_007_2.name = "Reroute.007"
+    reroute_007_2.socket_idname = "NodeSocketVector"
     # node Reroute.008
     reroute_008_1 = hole.nodes.new("NodeReroute")
     reroute_008_1.label = "peg_pull_direction"
     reroute_008_1.name = "Reroute.008"
+    reroute_008_1.socket_idname = "NodeSocketVector"
     # node Group Input.001
     group_input_001_1 = hole.nodes.new("NodeGroupInput")
     group_input_001_1.name = "Group Input.001"
@@ -2399,6 +2439,7 @@ def hole_node_group():
     # node Reroute.009
     reroute_009 = hole.nodes.new("NodeReroute")
     reroute_009.name = "Reroute.009"
+    reroute_009.socket_idname = "NodeSocketVector"
     # node Separate XYZ
     separate_xyz_1 = hole.nodes.new("ShaderNodeSeparateXYZ")
     separate_xyz_1.name = "Separate XYZ"
@@ -2425,6 +2466,7 @@ def hole_node_group():
     reroute_010 = hole.nodes.new("NodeReroute")
     reroute_010.label = "peg_height"
     reroute_010.name = "Reroute.010"
+    reroute_010.socket_idname = "NodeSocketFloat"
     # node Transform Geometry
     transform_geometry_1 = hole.nodes.new("GeometryNodeTransform")
     transform_geometry_1.name = "Transform Geometry"
@@ -2487,6 +2529,7 @@ def hole_node_group():
     # node Reroute.011
     reroute_011 = hole.nodes.new("NodeReroute")
     reroute_011.name = "Reroute.011"
+    reroute_011.socket_idname = "NodeSocketGeometry"
     # node Math
     math_3 = hole.nodes.new("ShaderNodeMath")
     math_3.name = "Math"
@@ -2520,6 +2563,7 @@ def hole_node_group():
     # node Reroute.012
     reroute_012 = hole.nodes.new("NodeReroute")
     reroute_012.name = "Reroute.012"
+    reroute_012.socket_idname = "NodeSocketGeometry"
     # node Vector Math.003
     vector_math_003 = hole.nodes.new("ShaderNodeVectorMath")
     vector_math_003.name = "Vector Math.003"
@@ -2538,6 +2582,7 @@ def hole_node_group():
     # node Reroute.013
     reroute_013 = hole.nodes.new("NodeReroute")
     reroute_013.name = "Reroute.013"
+    reroute_013.socket_idname = "NodeSocketVector"
     # node Normal.001
     normal_001_1 = hole.nodes.new("GeometryNodeInputNormal")
     normal_001_1.name = "Normal.001"
@@ -2609,6 +2654,7 @@ def hole_node_group():
     # node Reroute.014
     reroute_014 = hole.nodes.new("NodeReroute")
     reroute_014.name = "Reroute.014"
+    reroute_014.socket_idname = "NodeSocketVectorEuler"
     # node Group Input.005
     group_input_005_1 = hole.nodes.new("NodeGroupInput")
     group_input_005_1.name = "Group Input.005"
@@ -2823,6 +2869,7 @@ def hole_node_group():
     # node Reroute.015
     reroute_015 = hole.nodes.new("NodeReroute")
     reroute_015.name = "Reroute.015"
+    reroute_015.socket_idname = "NodeSocketVector"
     # node Group Input.011
     group_input_011_1 = hole.nodes.new("NodeGroupInput")
     group_input_011_1.name = "Group Input.011"
@@ -2954,6 +3001,7 @@ def hole_node_group():
     # node Reroute.016
     reroute_016 = hole.nodes.new("NodeReroute")
     reroute_016.name = "Reroute.016"
+    reroute_016.socket_idname = "NodeSocketGeometry"
     # node Vector Math.014
     vector_math_014 = hole.nodes.new("ShaderNodeVectorMath")
     vector_math_014.name = "Vector Math.014"
@@ -2982,6 +3030,7 @@ def hole_node_group():
     # node Reroute.017
     reroute_017 = hole.nodes.new("NodeReroute")
     reroute_017.name = "Reroute.017"
+    reroute_017.socket_idname = "NodeSocketVector"
     # node Capture Attribute.003
     capture_attribute_003 = hole.nodes.new("GeometryNodeCaptureAttribute")
     capture_attribute_003.name = "Capture Attribute.003"
@@ -3225,6 +3274,7 @@ def hole_node_group():
     # node Reroute.018
     reroute_018 = hole.nodes.new("NodeReroute")
     reroute_018.name = "Reroute.018"
+    reroute_018.socket_idname = "NodeSocketVector"
     # node Attribute Statistic.001
     attribute_statistic_001 = hole.nodes.new("GeometryNodeAttributeStatistic")
     attribute_statistic_001.name = "Attribute Statistic.001"
@@ -3289,6 +3339,7 @@ def hole_node_group():
     # node Reroute.019
     reroute_019 = hole.nodes.new("NodeReroute")
     reroute_019.name = "Reroute.019"
+    reroute_019.socket_idname = "NodeSocketVector"
     # node Group Input.020
     group_input_020 = hole.nodes.new("NodeGroupInput")
     group_input_020.name = "Group Input.020"
@@ -3358,6 +3409,7 @@ def hole_node_group():
     reroute_020 = hole.nodes.new("NodeReroute")
     reroute_020.label = "peg_insert_direction"
     reroute_020.name = "Reroute.020"
+    reroute_020.socket_idname = "NodeSocketVector"
     # node Vector Math.020
     vector_math_020 = hole.nodes.new("ShaderNodeVectorMath")
     vector_math_020.name = "Vector Math.020"
@@ -3400,6 +3452,7 @@ def hole_node_group():
     # node Reroute.021
     reroute_021 = hole.nodes.new("NodeReroute")
     reroute_021.name = "Reroute.021"
+    reroute_021.socket_idname = "NodeSocketVector"
     # node Vector Math.021
     vector_math_021 = hole.nodes.new("ShaderNodeVectorMath")
     vector_math_021.name = "Vector Math.021"
@@ -3411,13 +3464,16 @@ def hole_node_group():
     reroute_022 = hole.nodes.new("NodeReroute")
     reroute_022.label = "hole_position"
     reroute_022.name = "Reroute.022"
+    reroute_022.socket_idname = "NodeSocketVector"
     # node Reroute.023
     reroute_023 = hole.nodes.new("NodeReroute")
     reroute_023.label = "peg_pull_direction"
     reroute_023.name = "Reroute.023"
+    reroute_023.socket_idname = "NodeSocketVector"
     # node Reroute.024
     reroute_024 = hole.nodes.new("NodeReroute")
     reroute_024.name = "Reroute.024"
+    reroute_024.socket_idname = "NodeSocketVector"
     # node Vector Math.002
     vector_math_002 = hole.nodes.new("ShaderNodeVectorMath")
     vector_math_002.name = "Vector Math.002"
@@ -3427,13 +3483,16 @@ def hole_node_group():
     reroute_005_2 = hole.nodes.new("NodeReroute")
     reroute_005_2.label = "peg_insert_direction"
     reroute_005_2.name = "Reroute.005"
+    reroute_005_2.socket_idname = "NodeSocketVector"
     # node Reroute.026
     reroute_026 = hole.nodes.new("NodeReroute")
     reroute_026.name = "Reroute.026"
+    reroute_026.socket_idname = "NodeSocketVector"
     # node Reroute.004
     reroute_004_2 = hole.nodes.new("NodeReroute")
     reroute_004_2.label = "peg_with_tolerance"
     reroute_004_2.name = "Reroute.004"
+    reroute_004_2.socket_idname = "NodeSocketGeometry"
     # node Switch
     switch_1 = hole.nodes.new("GeometryNodeSwitch")
     switch_1.name = "Switch"
@@ -3472,10 +3531,12 @@ def hole_node_group():
     # node Reroute.025
     reroute_025 = hole.nodes.new("NodeReroute")
     reroute_025.name = "Reroute.025"
+    reroute_025.socket_idname = "NodeSocketVector"
     # node Reroute.028
     reroute_028 = hole.nodes.new("NodeReroute")
     reroute_028.name = "Reroute.028"
     reroute_028.hide = True
+    reroute_028.socket_idname = "NodeSocketVector"
     # node Group Output
     group_output_3 = hole.nodes.new("NodeGroupOutput")
     group_output_3.name = "Group Output"
@@ -3600,7 +3661,7 @@ def hole_node_group():
     # Socket_12
     group_002.inputs[11].default_value = 0.0
     # Socket_13
-    group_002.inputs[12].default_value = 0.25
+    group_002.inputs[12].default_value = 0.0
     # Socket_14
     group_002.inputs[13].default_value = False
 
@@ -3614,6 +3675,14 @@ def hole_node_group():
     vector_math_024.operation = "SCALE"
     # Scale
     vector_math_024.inputs[3].default_value = -1.0
+
+    # node Set Material
+    set_material_1 = hole.nodes.new("GeometryNodeSetMaterial")
+    set_material_1.name = "Set Material"
+    # Selection
+    set_material_1.inputs[1].default_value = True
+    if "Metal" in bpy.data.materials:
+        set_material_1.inputs[2].default_value = bpy.data.materials["Metal"]
 
     # Set parents
     frame_003_2.parent = frame_002_2
@@ -3919,7 +3988,7 @@ def hole_node_group():
     mesh_boolean_002.location = (-87.98570251464844, -316.8748779296875)
     reroute_025.location = (37.5357666015625, 1073.1732177734375)
     reroute_028.location = (-512.5114135742188, -1055.477294921875)
-    group_output_3.location = (1768.8592529296875, -87.35870361328125)
+    group_output_3.location = (2515.40380859375, -74.08328247070312)
     raycast_001.location = (864.0977172851562, 492.8777770996094)
     align_euler_to_vector_001.location = (1092.785400390625, 194.20965576171875)
     vector_math_022.location = (795.4451904296875, -892.4864501953125)
@@ -3934,6 +4003,7 @@ def hole_node_group():
     group_002.location = (-6626.4619140625, -9.70977783203125)
     group_input_024.location = (-6835.1376953125, -3.41729736328125)
     vector_math_024.location = (-885.42578125, 103.37994384765625)
+    set_material_1.location = (1701.5062255859375, -60.55561447143555)
 
     # Set dimensions
     frame_001_2.width, frame_001_2.height = 8388.0, 833.0
@@ -4106,6 +4176,7 @@ def hole_node_group():
     group_002.width, group_002.height = 140.0, 100.0
     group_input_024.width, group_input_024.height = 140.0, 100.0
     vector_math_024.width, vector_math_024.height = 140.0, 100.0
+    set_material_1.width, set_material_1.height = 140.0, 100.0
 
     # initialize hole links
     # group_input_001_1.peg -> object_info.Object
@@ -4158,7 +4229,7 @@ def hole_node_group():
     hole.links.new(normal_005.outputs[0], capture_attribute_004.inputs[1])
     # group_input_015.wall_include_bottom -> switch_002_1.Switch
     hole.links.new(group_input_015.outputs[16], switch_002_1.inputs[0])
-    # mesh_boolean.Mesh -> mesh_boolean_001.Mesh 2
+    # mesh_boolean.Mesh -> mesh_boolean_001.Mesh
     hole.links.new(mesh_boolean.outputs[0], mesh_boolean_001.inputs[1])
     # switch_002_1.Output -> mesh_boolean.Mesh 1
     hole.links.new(switch_002_1.outputs[0], mesh_boolean.inputs[0])
@@ -4462,8 +4533,8 @@ def hole_node_group():
     hole.links.new(vector_math_002.outputs[0], reroute_024.inputs[0])
     # reroute_024.Output -> reroute_025.Input
     hole.links.new(reroute_024.outputs[0], reroute_025.inputs[0])
-    # mesh_boolean_002.Mesh -> group_output_3.Geometry
-    hole.links.new(mesh_boolean_002.outputs[0], group_output_3.inputs[0])
+    # set_material_1.Geometry -> group_output_3.Geometry
+    hole.links.new(set_material_1.outputs[0], group_output_3.inputs[0])
     # reroute_022.Output -> vector_math_022.Vector
     hole.links.new(reroute_022.outputs[0], vector_math_022.inputs[0])
     # reroute_023.Output -> reroute_026.Input
@@ -4524,7 +4595,9 @@ def hole_node_group():
     hole.links.new(reroute_004_2.outputs[0], mesh_boolean_002.inputs[1])
     # vector_math_019.Vector -> vector_math_024.Vector
     hole.links.new(vector_math_019.outputs[0], vector_math_024.inputs[0])
-    # group_input_017.Geometry -> mesh_boolean_001.Mesh 2
+    # mesh_boolean_002.Mesh -> set_material_1.Geometry
+    hole.links.new(mesh_boolean_002.outputs[0], set_material_1.inputs[0])
+    # group_input_017.Geometry -> mesh_boolean_001.Mesh
     hole.links.new(group_input_017.outputs[0], mesh_boolean_001.inputs[1])
     return hole
 

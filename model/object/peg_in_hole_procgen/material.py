@@ -1,4 +1,5 @@
 import bpy
+import mathutils
 
 mat = bpy.data.materials.new(name="Metal")
 mat.use_nodes = True
@@ -12,6 +13,7 @@ def random_x4___mat_node_group():
 
     random_x4___mat.color_tag = "NONE"
     random_x4___mat.description = ""
+    random_x4___mat.default_group_node_width = 140
 
     # random_x4___mat interface
     # Socket 0
@@ -187,6 +189,7 @@ def metalshader_node_group():
 
     metalshader.color_tag = "NONE"
     metalshader.description = ""
+    metalshader.default_group_node_width = 140
 
     # metalshader interface
     # Socket BSDF
@@ -232,54 +235,56 @@ def metalshader_node_group():
     principled_bsdf.inputs[3].default_value = 1.5
     # Alpha
     principled_bsdf.inputs[4].default_value = 1.0
-    # Subsurface Weight
+    # Diffuse Roughness
     principled_bsdf.inputs[7].default_value = 0.0
+    # Subsurface Weight
+    principled_bsdf.inputs[8].default_value = 0.0
     # Subsurface Radius
-    principled_bsdf.inputs[8].default_value = (
+    principled_bsdf.inputs[9].default_value = (
         1.0,
         0.20000000298023224,
         0.10000000149011612,
     )
     # Subsurface Scale
-    principled_bsdf.inputs[9].default_value = 0.05000000074505806
+    principled_bsdf.inputs[10].default_value = 0.05000000074505806
     # Subsurface Anisotropy
-    principled_bsdf.inputs[11].default_value = 0.0
+    principled_bsdf.inputs[12].default_value = 0.0
     # Specular IOR Level
-    principled_bsdf.inputs[12].default_value = 0.5
+    principled_bsdf.inputs[13].default_value = 0.5
     # Specular Tint
-    principled_bsdf.inputs[13].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf.inputs[14].default_value = (1.0, 1.0, 1.0, 1.0)
     # Anisotropic
-    principled_bsdf.inputs[14].default_value = 0.0
-    # Anisotropic Rotation
     principled_bsdf.inputs[15].default_value = 0.0
+    # Anisotropic Rotation
+    principled_bsdf.inputs[16].default_value = 0.0
     # Tangent
-    principled_bsdf.inputs[16].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf.inputs[17].default_value = (0.0, 0.0, 0.0)
     # Transmission Weight
-    principled_bsdf.inputs[17].default_value = 0.0
-    # Coat Weight
     principled_bsdf.inputs[18].default_value = 0.0
+    # Coat Weight
+    principled_bsdf.inputs[19].default_value = 0.0
     # Coat Roughness
-    principled_bsdf.inputs[19].default_value = 0.029999999329447746
+    principled_bsdf.inputs[20].default_value = 0.029999999329447746
     # Coat IOR
-    principled_bsdf.inputs[20].default_value = 1.5
+    principled_bsdf.inputs[21].default_value = 1.5
     # Coat Tint
-    principled_bsdf.inputs[21].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf.inputs[22].default_value = (1.0, 1.0, 1.0, 1.0)
     # Coat Normal
-    principled_bsdf.inputs[22].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf.inputs[23].default_value = (0.0, 0.0, 0.0)
     # Sheen Weight
-    principled_bsdf.inputs[23].default_value = 0.0
+    principled_bsdf.inputs[24].default_value = 0.0
     # Sheen Roughness
-    principled_bsdf.inputs[24].default_value = 0.5
+    principled_bsdf.inputs[25].default_value = 0.5
     # Sheen Tint
-    principled_bsdf.inputs[25].default_value = (1.0, 1.0, 1.0, 1.0)
-    # Emission Color
     principled_bsdf.inputs[26].default_value = (1.0, 1.0, 1.0, 1.0)
+    # Emission Color
+    principled_bsdf.inputs[27].default_value = (1.0, 1.0, 1.0, 1.0)
     # Emission Strength
-    principled_bsdf.inputs[27].default_value = 0.0
-    # Thin Film Thickness
     principled_bsdf.inputs[28].default_value = 0.0
+    # Thin Film Thickness
+    principled_bsdf.inputs[29].default_value = 0.0
     # Thin Film IOR
-    principled_bsdf.inputs[29].default_value = 1.3300000429153442
+    principled_bsdf.inputs[30].default_value = 1.3300000429153442
 
     # node Group.001
     group_001 = metalshader.nodes.new("ShaderNodeGroup")
@@ -571,6 +576,7 @@ def metal_node_group():
         metal.nodes.remove(node)
     metal.color_tag = "NONE"
     metal.description = ""
+    metal.default_group_node_width = 140
 
     # metal interface
 

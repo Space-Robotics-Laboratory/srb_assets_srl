@@ -1,4 +1,5 @@
 import bpy
+import mathutils
 
 
 # initialize random__uniform_ node group
@@ -9,6 +10,7 @@ def random__uniform__node_group():
 
     random__uniform_.color_tag = "NONE"
     random__uniform_.description = ""
+    random__uniform_.default_group_node_width = 140
 
     # random__uniform_ interface
     # Socket Value
@@ -107,6 +109,7 @@ def random__normal__node_group():
 
     random__normal_.color_tag = "NONE"
     random__normal_.description = ""
+    random__normal_.default_group_node_width = 140
 
     # random__normal_ interface
     # Socket Value
@@ -381,6 +384,7 @@ def lunarrock_node_group():
 
     lunarrock.color_tag = "GEOMETRY"
     lunarrock.description = ""
+    lunarrock.default_group_node_width = 140
 
     lunarrock.is_modifier = True
 
@@ -599,6 +603,7 @@ def lunarrock_node_group():
     # node Reroute.001
     reroute_001 = lunarrock.nodes.new("NodeReroute")
     reroute_001.name = "Reroute.001"
+    reroute_001.socket_idname = "NodeSocketFloat"
     # node Transform Geometry
     transform_geometry = lunarrock.nodes.new("GeometryNodeTransform")
     transform_geometry.name = "Transform Geometry"
@@ -611,6 +616,7 @@ def lunarrock_node_group():
     # node Reroute.002
     reroute_002 = lunarrock.nodes.new("NodeReroute")
     reroute_002.name = "Reroute.002"
+    reroute_002.socket_idname = "NodeSocketInt"
     # node Attribute Statistic
     attribute_statistic = lunarrock.nodes.new("GeometryNodeAttributeStatistic")
     attribute_statistic.name = "Attribute Statistic"
@@ -632,6 +638,7 @@ def lunarrock_node_group():
     # node Reroute.003
     reroute_003 = lunarrock.nodes.new("NodeReroute")
     reroute_003.name = "Reroute.003"
+    reroute_003.socket_idname = "NodeSocketGeometry"
     # node Vector Math.002
     vector_math_002 = lunarrock.nodes.new("ShaderNodeVectorMath")
     vector_math_002.name = "Vector Math.002"
@@ -745,6 +752,7 @@ def lunarrock_node_group():
     # node Reroute.005
     reroute_005 = lunarrock.nodes.new("NodeReroute")
     reroute_005.name = "Reroute.005"
+    reroute_005.socket_idname = "NodeSocketFloat"
     # node Group.003
     group_003 = lunarrock.nodes.new("GeometryNodeGroup")
     group_003.name = "Group.003"
@@ -774,9 +782,11 @@ def lunarrock_node_group():
     # node Reroute.006
     reroute_006 = lunarrock.nodes.new("NodeReroute")
     reroute_006.name = "Reroute.006"
+    reroute_006.socket_idname = "NodeSocketFloat"
     # node Reroute
     reroute = lunarrock.nodes.new("NodeReroute")
     reroute.name = "Reroute"
+    reroute.socket_idname = "NodeSocketVectorXYZ"
     # node Group.007
     group_007 = lunarrock.nodes.new("GeometryNodeGroup")
     group_007.name = "Group.007"
@@ -979,6 +989,7 @@ def lunarrock_node_group():
     # node Reroute.010
     reroute_010 = lunarrock.nodes.new("NodeReroute")
     reroute_010.name = "Reroute.010"
+    reroute_010.socket_idname = "NodeSocketBool"
     # node Cube.001
     cube_001 = lunarrock.nodes.new("GeometryNodeMeshCube")
     cube_001.name = "Cube.001"
@@ -1002,6 +1013,7 @@ def lunarrock_node_group():
     # node Reroute.004
     reroute_004 = lunarrock.nodes.new("NodeReroute")
     reroute_004.name = "Reroute.004"
+    reroute_004.socket_idname = "NodeSocketGeometry"
     # node Frame.004
     frame_004 = lunarrock.nodes.new("NodeFrame")
     frame_004.name = "Frame.004"
@@ -1011,9 +1023,11 @@ def lunarrock_node_group():
     # node Reroute.012
     reroute_012 = lunarrock.nodes.new("NodeReroute")
     reroute_012.name = "Reroute.012"
+    reroute_012.socket_idname = "NodeSocketFloatDistance"
     # node Reroute.013
     reroute_013 = lunarrock.nodes.new("NodeReroute")
     reroute_013.name = "Reroute.013"
+    reroute_013.socket_idname = "NodeSocketFloatDistance"
     # node Transform Geometry.003
     transform_geometry_003 = lunarrock.nodes.new("GeometryNodeTransform")
     transform_geometry_003.name = "Transform Geometry.003"
@@ -1060,6 +1074,7 @@ def lunarrock_node_group():
     # node Reroute.015
     reroute_015 = lunarrock.nodes.new("NodeReroute")
     reroute_015.name = "Reroute.015"
+    reroute_015.socket_idname = "NodeSocketFloat"
     # node Separate XYZ
     separate_xyz = lunarrock.nodes.new("ShaderNodeSeparateXYZ")
     separate_xyz.name = "Separate XYZ"
@@ -1071,21 +1086,27 @@ def lunarrock_node_group():
     # node Reroute.017
     reroute_017 = lunarrock.nodes.new("NodeReroute")
     reroute_017.name = "Reroute.017"
+    reroute_017.socket_idname = "NodeSocketVectorXYZ"
     # node Reroute.018
     reroute_018 = lunarrock.nodes.new("NodeReroute")
     reroute_018.name = "Reroute.018"
+    reroute_018.socket_idname = "NodeSocketVectorXYZ"
     # node Reroute.019
     reroute_019 = lunarrock.nodes.new("NodeReroute")
     reroute_019.name = "Reroute.019"
+    reroute_019.socket_idname = "NodeSocketVectorXYZ"
     # node Reroute.020
     reroute_020 = lunarrock.nodes.new("NodeReroute")
     reroute_020.name = "Reroute.020"
+    reroute_020.socket_idname = "NodeSocketFloat"
     # node Reroute.021
     reroute_021 = lunarrock.nodes.new("NodeReroute")
     reroute_021.name = "Reroute.021"
+    reroute_021.socket_idname = "NodeSocketBool"
     # node Reroute.022
     reroute_022 = lunarrock.nodes.new("NodeReroute")
     reroute_022.name = "Reroute.022"
+    reroute_022.socket_idname = "NodeSocketFloatDistance"
     # node Frame.005
     frame_005 = lunarrock.nodes.new("NodeFrame")
     frame_005.name = "Frame.005"
@@ -1481,6 +1502,7 @@ def crater_profile_node_group():
 
     crater_profile.color_tag = "NONE"
     crater_profile.description = ""
+    crater_profile.default_group_node_width = 140
 
     # crater_profile interface
     # Socket Value
@@ -1619,6 +1641,7 @@ def crater_profile_node_group():
     # node Reroute.002
     reroute_002_1 = crater_profile.nodes.new("NodeReroute")
     reroute_002_1.name = "Reroute.002"
+    reroute_002_1.socket_idname = "NodeSocketInt"
     # node Integer
     integer_1 = crater_profile.nodes.new("FunctionNodeInputInt")
     integer_1.label = "Max N"
@@ -1836,6 +1859,7 @@ def crater_profile_node_group():
     # node Reroute.003
     reroute_003_1 = crater_profile.nodes.new("NodeReroute")
     reroute_003_1.name = "Reroute.003"
+    reroute_003_1.socket_idname = "NodeSocketFloat"
     # node Math.005
     math_005_1 = crater_profile.nodes.new("ShaderNodeMath")
     math_005_1.name = "Math.005"
@@ -2029,6 +2053,7 @@ def lunarterrain_node_group():
 
     lunarterrain.color_tag = "NONE"
     lunarterrain.description = ""
+    lunarterrain.default_group_node_width = 140
 
     lunarterrain.is_modifier = True
 
@@ -2203,6 +2228,7 @@ def lunarterrain_node_group():
     # node Reroute.001
     reroute_001_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_001_1.name = "Reroute.001"
+    reroute_001_1.socket_idname = "NodeSocketGeometry"
     # node Vector Math.002
     vector_math_002_1 = lunarterrain.nodes.new("ShaderNodeVectorMath")
     vector_math_002_1.name = "Vector Math.002"
@@ -2235,6 +2261,7 @@ def lunarterrain_node_group():
     # node Reroute.003
     reroute_003_2 = lunarterrain.nodes.new("NodeReroute")
     reroute_003_2.name = "Reroute.003"
+    reroute_003_2.socket_idname = "NodeSocketFloat"
     # node Compare
     compare_1 = lunarterrain.nodes.new("FunctionNodeCompare")
     compare_1.name = "Compare"
@@ -2262,6 +2289,7 @@ def lunarterrain_node_group():
     # node Reroute.005
     reroute_005_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_005_1.name = "Reroute.005"
+    reroute_005_1.socket_idname = "NodeSocketVectorXYZ"
     # node Float to Integer
     float_to_integer_1 = lunarterrain.nodes.new("FunctionNodeFloatToInt")
     float_to_integer_1.name = "Float to Integer"
@@ -2302,6 +2330,7 @@ def lunarterrain_node_group():
     # node Reroute.007
     reroute_007 = lunarterrain.nodes.new("NodeReroute")
     reroute_007.name = "Reroute.007"
+    reroute_007.socket_idname = "NodeSocketGeometry"
     # node Vector Math.028
     vector_math_028 = lunarterrain.nodes.new("ShaderNodeVectorMath")
     vector_math_028.name = "Vector Math.028"
@@ -2317,12 +2346,15 @@ def lunarterrain_node_group():
     # node Reroute.008
     reroute_008 = lunarterrain.nodes.new("NodeReroute")
     reroute_008.name = "Reroute.008"
+    reroute_008.socket_idname = "NodeSocketVectorXYZ"
     # node Reroute.006
     reroute_006_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_006_1.name = "Reroute.006"
+    reroute_006_1.socket_idname = "NodeSocketFloat"
     # node Reroute.004
     reroute_004_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_004_1.name = "Reroute.004"
+    reroute_004_1.socket_idname = "NodeSocketFloat"
     # node Noise Texture.009
     noise_texture_009 = lunarterrain.nodes.new("ShaderNodeTexNoise")
     noise_texture_009.name = "Noise Texture.009"
@@ -2348,6 +2380,7 @@ def lunarterrain_node_group():
     # node Reroute.009
     reroute_009 = lunarterrain.nodes.new("NodeReroute")
     reroute_009.name = "Reroute.009"
+    reroute_009.socket_idname = "NodeSocketInt"
     # node Group
     group_2 = lunarterrain.nodes.new("GeometryNodeGroup")
     group_2.name = "Group"
@@ -2433,6 +2466,7 @@ def lunarterrain_node_group():
     # node Reroute.010
     reroute_010_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_010_1.name = "Reroute.010"
+    reroute_010_1.socket_idname = "NodeSocketInt"
     # node Group.018
     group_018 = lunarterrain.nodes.new("GeometryNodeGroup")
     group_018.name = "Group.018"
@@ -2505,6 +2539,7 @@ def lunarterrain_node_group():
     # node Reroute.011
     reroute_011 = lunarterrain.nodes.new("NodeReroute")
     reroute_011.name = "Reroute.011"
+    reroute_011.socket_idname = "NodeSocketInt"
     # node Group.022
     group_022_1 = lunarterrain.nodes.new("GeometryNodeGroup")
     group_022_1.name = "Group.022"
@@ -2645,6 +2680,7 @@ def lunarterrain_node_group():
     # node Reroute
     reroute_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_1.name = "Reroute"
+    reroute_1.socket_idname = "NodeSocketVectorXYZ"
     # node Frame.007
     frame_007 = lunarterrain.nodes.new("NodeFrame")
     frame_007.label = "Surface displacement"
@@ -2655,6 +2691,7 @@ def lunarterrain_node_group():
     # node Reroute.012
     reroute_012_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_012_1.name = "Reroute.012"
+    reroute_012_1.socket_idname = "NodeSocketInt"
     # node Transform Geometry.002
     transform_geometry_002_1 = lunarterrain.nodes.new("GeometryNodeTransform")
     transform_geometry_002_1.name = "Transform Geometry.002"
@@ -2690,6 +2727,7 @@ def lunarterrain_node_group():
     # node Reroute.013
     reroute_013_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_013_1.name = "Reroute.013"
+    reroute_013_1.socket_idname = "NodeSocketGeometry"
     # node Vector Math.030
     vector_math_030 = lunarterrain.nodes.new("ShaderNodeVectorMath")
     vector_math_030.name = "Vector Math.030"
@@ -2764,12 +2802,15 @@ def lunarterrain_node_group():
     # node Reroute.002
     reroute_002_2 = lunarterrain.nodes.new("NodeReroute")
     reroute_002_2.name = "Reroute.002"
+    reroute_002_2.socket_idname = "NodeSocketInt"
     # node Reroute.014
     reroute_014 = lunarterrain.nodes.new("NodeReroute")
     reroute_014.name = "Reroute.014"
+    reroute_014.socket_idname = "NodeSocketInt"
     # node Reroute.015
     reroute_015_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_015_1.name = "Reroute.015"
+    reroute_015_1.socket_idname = "NodeSocketFloat"
     # node Group.002
     group_002_1 = lunarterrain.nodes.new("GeometryNodeGroup")
     group_002_1.name = "Group.002"
@@ -2825,6 +2866,7 @@ def lunarterrain_node_group():
     # node Reroute.016
     reroute_016 = lunarterrain.nodes.new("NodeReroute")
     reroute_016.name = "Reroute.016"
+    reroute_016.socket_idname = "NodeSocketInt"
     # node Group.001
     group_001_1 = lunarterrain.nodes.new("GeometryNodeGroup")
     group_001_1.name = "Group.001"
@@ -2933,10 +2975,12 @@ def lunarterrain_node_group():
     reroute_018_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_018_1.label = "Index"
     reroute_018_1.name = "Reroute.018"
+    reroute_018_1.socket_idname = "NodeSocketFloat"
     # node Reroute.019
     reroute_019_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_019_1.label = "Seed"
     reroute_019_1.name = "Reroute.019"
+    reroute_019_1.socket_idname = "NodeSocketFloat"
     # node Group.007
     group_007_1 = lunarterrain.nodes.new("GeometryNodeGroup")
     group_007_1.name = "Group.007"
@@ -3291,18 +3335,23 @@ def lunarterrain_node_group():
     # node Reroute.017
     reroute_017_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_017_1.name = "Reroute.017"
+    reroute_017_1.socket_idname = "NodeSocketGeometry"
     # node Reroute.020
     reroute_020_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_020_1.name = "Reroute.020"
+    reroute_020_1.socket_idname = "NodeSocketGeometry"
     # node Reroute.021
     reroute_021_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_021_1.name = "Reroute.021"
+    reroute_021_1.socket_idname = "NodeSocketFloat"
     # node Reroute.022
     reroute_022_1 = lunarterrain.nodes.new("NodeReroute")
     reroute_022_1.name = "Reroute.022"
+    reroute_022_1.socket_idname = "NodeSocketVector"
     # node Reroute.023
     reroute_023 = lunarterrain.nodes.new("NodeReroute")
     reroute_023.name = "Reroute.023"
+    reroute_023.socket_idname = "NodeSocketFloat"
     # node Store Named Attribute
     store_named_attribute = lunarterrain.nodes.new("GeometryNodeStoreNamedAttribute")
     store_named_attribute.name = "Store Named Attribute"
@@ -3368,9 +3417,11 @@ def lunarterrain_node_group():
     # node Reroute.025
     reroute_025 = lunarterrain.nodes.new("NodeReroute")
     reroute_025.name = "Reroute.025"
+    reroute_025.socket_idname = "NodeSocketFloat"
     # node Reroute.026
     reroute_026 = lunarterrain.nodes.new("NodeReroute")
     reroute_026.name = "Reroute.026"
+    reroute_026.socket_idname = "NodeSocketInt"
     # node Position.007
     position_007 = lunarterrain.nodes.new("GeometryNodeInputPosition")
     position_007.name = "Position.007"
@@ -3383,6 +3434,7 @@ def lunarterrain_node_group():
     # node Reroute.027
     reroute_027 = lunarterrain.nodes.new("NodeReroute")
     reroute_027.name = "Reroute.027"
+    reroute_027.socket_idname = "NodeSocketFloat"
     # node Math.024
     math_024 = lunarterrain.nodes.new("ShaderNodeMath")
     math_024.name = "Math.024"
@@ -3414,21 +3466,27 @@ def lunarterrain_node_group():
     # node Reroute.028
     reroute_028 = lunarterrain.nodes.new("NodeReroute")
     reroute_028.name = "Reroute.028"
+    reroute_028.socket_idname = "NodeSocketGeometry"
     # node Reroute.031
     reroute_031 = lunarterrain.nodes.new("NodeReroute")
     reroute_031.name = "Reroute.031"
+    reroute_031.socket_idname = "NodeSocketInt"
     # node Reroute.033
     reroute_033 = lunarterrain.nodes.new("NodeReroute")
     reroute_033.name = "Reroute.033"
+    reroute_033.socket_idname = "NodeSocketGeometry"
     # node Reroute.032
     reroute_032 = lunarterrain.nodes.new("NodeReroute")
     reroute_032.name = "Reroute.032"
+    reroute_032.socket_idname = "NodeSocketVectorXYZ"
     # node Reroute.029
     reroute_029 = lunarterrain.nodes.new("NodeReroute")
     reroute_029.name = "Reroute.029"
+    reroute_029.socket_idname = "NodeSocketInt"
     # node Reroute.030
     reroute_030 = lunarterrain.nodes.new("NodeReroute")
     reroute_030.name = "Reroute.030"
+    reroute_030.socket_idname = "NodeSocketInt"
     # node Frame.009
     frame_009 = lunarterrain.nodes.new("NodeFrame")
     frame_009.name = "Frame.009"
@@ -3448,6 +3506,7 @@ def lunarterrain_node_group():
     # node Reroute.024
     reroute_024 = lunarterrain.nodes.new("NodeReroute")
     reroute_024.name = "Reroute.024"
+    reroute_024.socket_idname = "NodeSocketFloat"
     # node Frame.019
     frame_019 = lunarterrain.nodes.new("NodeFrame")
     frame_019.label = "Max crater size"
@@ -3458,6 +3517,7 @@ def lunarterrain_node_group():
     # node Reroute.035
     reroute_035 = lunarterrain.nodes.new("NodeReroute")
     reroute_035.name = "Reroute.035"
+    reroute_035.socket_idname = "NodeSocketFloat"
     # node Boolean Math.001
     boolean_math_001 = lunarterrain.nodes.new("FunctionNodeBooleanMath")
     boolean_math_001.name = "Boolean Math.001"
@@ -3485,6 +3545,7 @@ def lunarterrain_node_group():
     # node Reroute.034
     reroute_034 = lunarterrain.nodes.new("NodeReroute")
     reroute_034.name = "Reroute.034"
+    reroute_034.socket_idname = "NodeSocketFloat"
     # node Mix.002
     mix_002 = lunarterrain.nodes.new("ShaderNodeMix")
     mix_002.name = "Mix.002"
@@ -3555,6 +3616,7 @@ def lunarterrain_node_group():
     # node Reroute.036
     reroute_036 = lunarterrain.nodes.new("NodeReroute")
     reroute_036.name = "Reroute.036"
+    reroute_036.socket_idname = "NodeSocketInt"
     # node Math.029
     math_029 = lunarterrain.nodes.new("ShaderNodeMath")
     math_029.name = "Math.029"
@@ -3634,9 +3696,11 @@ def lunarterrain_node_group():
     # node Reroute.040
     reroute_040 = lunarterrain.nodes.new("NodeReroute")
     reroute_040.name = "Reroute.040"
+    reroute_040.socket_idname = "NodeSocketFloat"
     # node Reroute.038
     reroute_038 = lunarterrain.nodes.new("NodeReroute")
     reroute_038.name = "Reroute.038"
+    reroute_038.socket_idname = "NodeSocketFloat"
     # node Math.030
     math_030 = lunarterrain.nodes.new("ShaderNodeMath")
     math_030.name = "Math.030"
@@ -3668,12 +3732,15 @@ def lunarterrain_node_group():
     # node Reroute.037
     reroute_037 = lunarterrain.nodes.new("NodeReroute")
     reroute_037.name = "Reroute.037"
+    reroute_037.socket_idname = "NodeSocketGeometry"
     # node Reroute.039
     reroute_039 = lunarterrain.nodes.new("NodeReroute")
     reroute_039.name = "Reroute.039"
+    reroute_039.socket_idname = "NodeSocketBool"
     # node Reroute.041
     reroute_041 = lunarterrain.nodes.new("NodeReroute")
     reroute_041.name = "Reroute.041"
+    reroute_041.socket_idname = "NodeSocketBool"
     # node Value
     value = lunarterrain.nodes.new("ShaderNodeValue")
     value.label = "Rock Size Limit"
@@ -4364,7 +4431,7 @@ def lunarterrain_node_group():
     # math_004_2.Value -> math_005_2.Value
     lunarterrain.links.new(math_004_2.outputs[0], math_005_2.inputs[0])
     # repeat_input.Point Index -> math_004_2.Value
-    lunarterrain.links.new(repeat_input.outputs[1], math_004_2.inputs[0])
+    lunarterrain.links.new(repeat_input.outputs[2], math_004_2.inputs[0])
     # reroute_019_1.Output -> group_007_1.Seed
     lunarterrain.links.new(reroute_019_1.outputs[0], group_007_1.inputs[2])
     # reroute_019_1.Output -> group_001_1.Seed
@@ -4396,7 +4463,7 @@ def lunarterrain_node_group():
     # separate_xyz_002_1.Y -> math_008_1.Value
     lunarterrain.links.new(separate_xyz_002_1.outputs[1], math_008_1.inputs[0])
     # repeat_input.Geometry -> join_geometry_001.Geometry
-    lunarterrain.links.new(repeat_input.outputs[0], join_geometry_001.inputs[0])
+    lunarterrain.links.new(repeat_input.outputs[1], join_geometry_001.inputs[0])
     # reroute_036.Output -> distribute_points_on_faces.Seed
     lunarterrain.links.new(reroute_036.outputs[0], distribute_points_on_faces.inputs[6])
     # reroute_031.Output -> group_006_1.Seed
@@ -4685,7 +4752,7 @@ def lunarterrain_node_group():
     lunarterrain.links.new(join_geometry.outputs[0], switch_2.inputs[1])
     # reroute_033.Output -> reroute_037.Input
     lunarterrain.links.new(reroute_033.outputs[0], reroute_037.inputs[0])
-    # repeat_output.Geometry -> mesh_boolean_1.Mesh 2
+    # repeat_output.Geometry -> mesh_boolean_1.Mesh
     lunarterrain.links.new(repeat_output.outputs[0], mesh_boolean_1.inputs[1])
     # mesh_boolean_1.Mesh -> switch_2.True
     lunarterrain.links.new(mesh_boolean_1.outputs[0], switch_2.inputs[2])
@@ -4703,7 +4770,7 @@ def lunarterrain_node_group():
     )
     # reroute_037.Output -> join_geometry.Geometry
     lunarterrain.links.new(reroute_037.outputs[0], join_geometry.inputs[0])
-    # reroute_037.Output -> mesh_boolean_1.Mesh 2
+    # reroute_037.Output -> mesh_boolean_1.Mesh
     lunarterrain.links.new(reroute_037.outputs[0], mesh_boolean_1.inputs[1])
     return lunarterrain
 

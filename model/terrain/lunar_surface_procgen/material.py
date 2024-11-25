@@ -1,4 +1,5 @@
 import bpy
+import mathutils
 
 mat = bpy.data.materials.new(name="LunarSurface")
 mat.use_nodes = True
@@ -12,6 +13,7 @@ def random_x4___mat_node_group():
 
     random_x4___mat.color_tag = "NONE"
     random_x4___mat.description = ""
+    random_x4___mat.default_group_node_width = 140
 
     # random_x4___mat interface
     # Socket 0
@@ -178,6 +180,7 @@ def rockygroundshader_node_group():
 
     rockygroundshader.color_tag = "NONE"
     rockygroundshader.description = ""
+    rockygroundshader.default_group_node_width = 140
 
     # rockygroundshader interface
     # Socket Shader
@@ -784,54 +787,56 @@ def rockygroundshader_node_group():
     principled_bsdf.inputs[3].default_value = 1.4500000476837158
     # Alpha
     principled_bsdf.inputs[4].default_value = 1.0
-    # Subsurface Weight
+    # Diffuse Roughness
     principled_bsdf.inputs[7].default_value = 0.0
+    # Subsurface Weight
+    principled_bsdf.inputs[8].default_value = 0.0
     # Subsurface Radius
-    principled_bsdf.inputs[8].default_value = (
+    principled_bsdf.inputs[9].default_value = (
         1.0,
         0.20000000298023224,
         0.10000000149011612,
     )
     # Subsurface Scale
-    principled_bsdf.inputs[9].default_value = 0.05000000074505806
+    principled_bsdf.inputs[10].default_value = 0.05000000074505806
     # Subsurface Anisotropy
-    principled_bsdf.inputs[11].default_value = 0.0
+    principled_bsdf.inputs[12].default_value = 0.0
     # Specular IOR Level
-    principled_bsdf.inputs[12].default_value = 0.5
+    principled_bsdf.inputs[13].default_value = 0.5
     # Specular Tint
-    principled_bsdf.inputs[13].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf.inputs[14].default_value = (1.0, 1.0, 1.0, 1.0)
     # Anisotropic
-    principled_bsdf.inputs[14].default_value = 0.0
-    # Anisotropic Rotation
     principled_bsdf.inputs[15].default_value = 0.0
+    # Anisotropic Rotation
+    principled_bsdf.inputs[16].default_value = 0.0
     # Tangent
-    principled_bsdf.inputs[16].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf.inputs[17].default_value = (0.0, 0.0, 0.0)
     # Transmission Weight
-    principled_bsdf.inputs[17].default_value = 0.0
-    # Coat Weight
     principled_bsdf.inputs[18].default_value = 0.0
+    # Coat Weight
+    principled_bsdf.inputs[19].default_value = 0.0
     # Coat Roughness
-    principled_bsdf.inputs[19].default_value = 0.029999999329447746
+    principled_bsdf.inputs[20].default_value = 0.029999999329447746
     # Coat IOR
-    principled_bsdf.inputs[20].default_value = 1.5
+    principled_bsdf.inputs[21].default_value = 1.5
     # Coat Tint
-    principled_bsdf.inputs[21].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf.inputs[22].default_value = (1.0, 1.0, 1.0, 1.0)
     # Coat Normal
-    principled_bsdf.inputs[22].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf.inputs[23].default_value = (0.0, 0.0, 0.0)
     # Sheen Weight
-    principled_bsdf.inputs[23].default_value = 0.0
+    principled_bsdf.inputs[24].default_value = 0.0
     # Sheen Roughness
-    principled_bsdf.inputs[24].default_value = 0.5
+    principled_bsdf.inputs[25].default_value = 0.5
     # Sheen Tint
-    principled_bsdf.inputs[25].default_value = (1.0, 1.0, 1.0, 1.0)
-    # Emission Color
     principled_bsdf.inputs[26].default_value = (1.0, 1.0, 1.0, 1.0)
+    # Emission Color
+    principled_bsdf.inputs[27].default_value = (1.0, 1.0, 1.0, 1.0)
     # Emission Strength
-    principled_bsdf.inputs[27].default_value = 0.0
-    # Thin Film Thickness
     principled_bsdf.inputs[28].default_value = 0.0
+    # Thin Film Thickness
+    principled_bsdf.inputs[29].default_value = 0.0
     # Thin Film IOR
-    principled_bsdf.inputs[29].default_value = 1.3300000429153442
+    principled_bsdf.inputs[30].default_value = 1.3300000429153442
 
     # node Noise Texture.006
     noise_texture_006 = rockygroundshader.nodes.new("ShaderNodeTexNoise")
@@ -1337,6 +1342,7 @@ def lunarsurfaceshader_node_group():
 
     lunarsurfaceshader.color_tag = "NONE"
     lunarsurfaceshader.description = ""
+    lunarsurfaceshader.default_group_node_width = 140
 
     # lunarsurfaceshader interface
     # Socket BSDF
@@ -1520,54 +1526,56 @@ def lunarsurfaceshader_node_group():
     principled_bsdf_1.inputs[3].default_value = 1.5
     # Alpha
     principled_bsdf_1.inputs[4].default_value = 1.0
-    # Subsurface Weight
+    # Diffuse Roughness
     principled_bsdf_1.inputs[7].default_value = 0.0
+    # Subsurface Weight
+    principled_bsdf_1.inputs[8].default_value = 0.0
     # Subsurface Radius
-    principled_bsdf_1.inputs[8].default_value = (
+    principled_bsdf_1.inputs[9].default_value = (
         1.0,
         0.20000000298023224,
         0.10000000149011612,
     )
     # Subsurface Scale
-    principled_bsdf_1.inputs[9].default_value = 0.05000000074505806
+    principled_bsdf_1.inputs[10].default_value = 0.05000000074505806
     # Subsurface Anisotropy
-    principled_bsdf_1.inputs[11].default_value = 0.0
+    principled_bsdf_1.inputs[12].default_value = 0.0
     # Specular IOR Level
-    principled_bsdf_1.inputs[12].default_value = 0.5
+    principled_bsdf_1.inputs[13].default_value = 0.5
     # Specular Tint
-    principled_bsdf_1.inputs[13].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf_1.inputs[14].default_value = (1.0, 1.0, 1.0, 1.0)
     # Anisotropic
-    principled_bsdf_1.inputs[14].default_value = 0.0
-    # Anisotropic Rotation
     principled_bsdf_1.inputs[15].default_value = 0.0
+    # Anisotropic Rotation
+    principled_bsdf_1.inputs[16].default_value = 0.0
     # Tangent
-    principled_bsdf_1.inputs[16].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf_1.inputs[17].default_value = (0.0, 0.0, 0.0)
     # Transmission Weight
-    principled_bsdf_1.inputs[17].default_value = 0.0
-    # Coat Weight
     principled_bsdf_1.inputs[18].default_value = 0.0
+    # Coat Weight
+    principled_bsdf_1.inputs[19].default_value = 0.0
     # Coat Roughness
-    principled_bsdf_1.inputs[19].default_value = 0.029999999329447746
+    principled_bsdf_1.inputs[20].default_value = 0.029999999329447746
     # Coat IOR
-    principled_bsdf_1.inputs[20].default_value = 1.5
+    principled_bsdf_1.inputs[21].default_value = 1.5
     # Coat Tint
-    principled_bsdf_1.inputs[21].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf_1.inputs[22].default_value = (1.0, 1.0, 1.0, 1.0)
     # Coat Normal
-    principled_bsdf_1.inputs[22].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf_1.inputs[23].default_value = (0.0, 0.0, 0.0)
     # Sheen Weight
-    principled_bsdf_1.inputs[23].default_value = 0.0
+    principled_bsdf_1.inputs[24].default_value = 0.0
     # Sheen Roughness
-    principled_bsdf_1.inputs[24].default_value = 0.5
+    principled_bsdf_1.inputs[25].default_value = 0.5
     # Sheen Tint
-    principled_bsdf_1.inputs[25].default_value = (1.0, 1.0, 1.0, 1.0)
-    # Emission Color
     principled_bsdf_1.inputs[26].default_value = (1.0, 1.0, 1.0, 1.0)
+    # Emission Color
+    principled_bsdf_1.inputs[27].default_value = (1.0, 1.0, 1.0, 1.0)
     # Emission Strength
-    principled_bsdf_1.inputs[27].default_value = 0.0
-    # Thin Film Thickness
     principled_bsdf_1.inputs[28].default_value = 0.0
+    # Thin Film Thickness
+    principled_bsdf_1.inputs[29].default_value = 0.0
     # Thin Film IOR
-    principled_bsdf_1.inputs[29].default_value = 1.3300000429153442
+    principled_bsdf_1.inputs[30].default_value = 1.3300000429153442
 
     # node Noise Texture
     noise_texture_1 = lunarsurfaceshader.nodes.new("ShaderNodeTexNoise")
@@ -1945,6 +1953,7 @@ def random_x8___mat_node_group():
 
     random_x8___mat.color_tag = "NONE"
     random_x8___mat.description = ""
+    random_x8___mat.default_group_node_width = 140
 
     # random_x8___mat interface
     # Socket 0
@@ -2229,6 +2238,7 @@ def sandshader_node_group():
 
     sandshader.color_tag = "NONE"
     sandshader.description = ""
+    sandshader.default_group_node_width = 140
 
     # sandshader interface
     # Socket BSDF
@@ -2359,54 +2369,56 @@ def sandshader_node_group():
     principled_bsdf_2.inputs[3].default_value = 1.5
     # Alpha
     principled_bsdf_2.inputs[4].default_value = 1.0
-    # Subsurface Weight
+    # Diffuse Roughness
     principled_bsdf_2.inputs[7].default_value = 0.0
+    # Subsurface Weight
+    principled_bsdf_2.inputs[8].default_value = 0.0
     # Subsurface Radius
-    principled_bsdf_2.inputs[8].default_value = (
+    principled_bsdf_2.inputs[9].default_value = (
         1.0,
         0.20000000298023224,
         0.10000000149011612,
     )
     # Subsurface Scale
-    principled_bsdf_2.inputs[9].default_value = 0.05000000074505806
+    principled_bsdf_2.inputs[10].default_value = 0.05000000074505806
     # Subsurface Anisotropy
-    principled_bsdf_2.inputs[11].default_value = 0.0
+    principled_bsdf_2.inputs[12].default_value = 0.0
     # Specular IOR Level
-    principled_bsdf_2.inputs[12].default_value = 0.5
+    principled_bsdf_2.inputs[13].default_value = 0.5
     # Specular Tint
-    principled_bsdf_2.inputs[13].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf_2.inputs[14].default_value = (1.0, 1.0, 1.0, 1.0)
     # Anisotropic
-    principled_bsdf_2.inputs[14].default_value = 0.0
-    # Anisotropic Rotation
     principled_bsdf_2.inputs[15].default_value = 0.0
+    # Anisotropic Rotation
+    principled_bsdf_2.inputs[16].default_value = 0.0
     # Tangent
-    principled_bsdf_2.inputs[16].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf_2.inputs[17].default_value = (0.0, 0.0, 0.0)
     # Transmission Weight
-    principled_bsdf_2.inputs[17].default_value = 0.0
-    # Coat Weight
     principled_bsdf_2.inputs[18].default_value = 0.0
+    # Coat Weight
+    principled_bsdf_2.inputs[19].default_value = 0.0
     # Coat Roughness
-    principled_bsdf_2.inputs[19].default_value = 0.029999999329447746
+    principled_bsdf_2.inputs[20].default_value = 0.029999999329447746
     # Coat IOR
-    principled_bsdf_2.inputs[20].default_value = 1.5
+    principled_bsdf_2.inputs[21].default_value = 1.5
     # Coat Tint
-    principled_bsdf_2.inputs[21].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf_2.inputs[22].default_value = (1.0, 1.0, 1.0, 1.0)
     # Coat Normal
-    principled_bsdf_2.inputs[22].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf_2.inputs[23].default_value = (0.0, 0.0, 0.0)
     # Sheen Weight
-    principled_bsdf_2.inputs[23].default_value = 0.0
+    principled_bsdf_2.inputs[24].default_value = 0.0
     # Sheen Roughness
-    principled_bsdf_2.inputs[24].default_value = 0.5
+    principled_bsdf_2.inputs[25].default_value = 0.5
     # Sheen Tint
-    principled_bsdf_2.inputs[25].default_value = (1.0, 1.0, 1.0, 1.0)
-    # Emission Color
     principled_bsdf_2.inputs[26].default_value = (1.0, 1.0, 1.0, 1.0)
+    # Emission Color
+    principled_bsdf_2.inputs[27].default_value = (1.0, 1.0, 1.0, 1.0)
     # Emission Strength
-    principled_bsdf_2.inputs[27].default_value = 0.0
-    # Thin Film Thickness
     principled_bsdf_2.inputs[28].default_value = 0.0
+    # Thin Film Thickness
+    principled_bsdf_2.inputs[29].default_value = 0.0
     # Thin Film IOR
-    principled_bsdf_2.inputs[29].default_value = 1.3300000429153442
+    principled_bsdf_2.inputs[30].default_value = 1.3300000429153442
 
     # node Mapping
     mapping_2 = sandshader.nodes.new("ShaderNodeMapping")
@@ -2684,6 +2696,7 @@ def smoothrockshader_node_group():
 
     smoothrockshader.color_tag = "NONE"
     smoothrockshader.description = ""
+    smoothrockshader.default_group_node_width = 140
 
     # smoothrockshader interface
     # Socket BSDF
@@ -2827,54 +2840,56 @@ def smoothrockshader_node_group():
     principled_bsdf_3.inputs[3].default_value = 1.5
     # Alpha
     principled_bsdf_3.inputs[4].default_value = 1.0
-    # Subsurface Weight
+    # Diffuse Roughness
     principled_bsdf_3.inputs[7].default_value = 0.0
+    # Subsurface Weight
+    principled_bsdf_3.inputs[8].default_value = 0.0
     # Subsurface Radius
-    principled_bsdf_3.inputs[8].default_value = (
+    principled_bsdf_3.inputs[9].default_value = (
         1.0,
         0.20000000298023224,
         0.10000000149011612,
     )
     # Subsurface Scale
-    principled_bsdf_3.inputs[9].default_value = 0.05000000074505806
+    principled_bsdf_3.inputs[10].default_value = 0.05000000074505806
     # Subsurface Anisotropy
-    principled_bsdf_3.inputs[11].default_value = 0.0
+    principled_bsdf_3.inputs[12].default_value = 0.0
     # Specular IOR Level
-    principled_bsdf_3.inputs[12].default_value = 0.5
+    principled_bsdf_3.inputs[13].default_value = 0.5
     # Specular Tint
-    principled_bsdf_3.inputs[13].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf_3.inputs[14].default_value = (1.0, 1.0, 1.0, 1.0)
     # Anisotropic
-    principled_bsdf_3.inputs[14].default_value = 0.0
-    # Anisotropic Rotation
     principled_bsdf_3.inputs[15].default_value = 0.0
+    # Anisotropic Rotation
+    principled_bsdf_3.inputs[16].default_value = 0.0
     # Tangent
-    principled_bsdf_3.inputs[16].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf_3.inputs[17].default_value = (0.0, 0.0, 0.0)
     # Transmission Weight
-    principled_bsdf_3.inputs[17].default_value = 0.0
-    # Coat Weight
     principled_bsdf_3.inputs[18].default_value = 0.0
+    # Coat Weight
+    principled_bsdf_3.inputs[19].default_value = 0.0
     # Coat Roughness
-    principled_bsdf_3.inputs[19].default_value = 0.029999999329447746
+    principled_bsdf_3.inputs[20].default_value = 0.029999999329447746
     # Coat IOR
-    principled_bsdf_3.inputs[20].default_value = 1.5
+    principled_bsdf_3.inputs[21].default_value = 1.5
     # Coat Tint
-    principled_bsdf_3.inputs[21].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf_3.inputs[22].default_value = (1.0, 1.0, 1.0, 1.0)
     # Coat Normal
-    principled_bsdf_3.inputs[22].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf_3.inputs[23].default_value = (0.0, 0.0, 0.0)
     # Sheen Weight
-    principled_bsdf_3.inputs[23].default_value = 0.0
+    principled_bsdf_3.inputs[24].default_value = 0.0
     # Sheen Roughness
-    principled_bsdf_3.inputs[24].default_value = 0.5
+    principled_bsdf_3.inputs[25].default_value = 0.5
     # Sheen Tint
-    principled_bsdf_3.inputs[25].default_value = (1.0, 1.0, 1.0, 1.0)
-    # Emission Color
     principled_bsdf_3.inputs[26].default_value = (1.0, 1.0, 1.0, 1.0)
+    # Emission Color
+    principled_bsdf_3.inputs[27].default_value = (1.0, 1.0, 1.0, 1.0)
     # Emission Strength
-    principled_bsdf_3.inputs[27].default_value = 0.0
-    # Thin Film Thickness
     principled_bsdf_3.inputs[28].default_value = 0.0
+    # Thin Film Thickness
+    principled_bsdf_3.inputs[29].default_value = 0.0
     # Thin Film IOR
-    principled_bsdf_3.inputs[29].default_value = 1.3300000429153442
+    principled_bsdf_3.inputs[30].default_value = 1.3300000429153442
 
     # node Mapping
     mapping_3 = smoothrockshader.nodes.new("ShaderNodeMapping")
@@ -3105,6 +3120,7 @@ def random_x2___mat_node_group():
 
     random_x2___mat.color_tag = "NONE"
     random_x2___mat.description = ""
+    random_x2___mat.default_group_node_width = 140
 
     # random_x2___mat interface
     # Socket 0
@@ -3216,6 +3232,7 @@ def rockshader_node_group():
 
     rockshader.color_tag = "NONE"
     rockshader.description = ""
+    rockshader.default_group_node_width = 140
 
     # rockshader interface
     # Socket BSDF
@@ -3648,54 +3665,56 @@ def rockshader_node_group():
     principled_bsdf_4.inputs[3].default_value = 1.5
     # Alpha
     principled_bsdf_4.inputs[4].default_value = 1.0
-    # Subsurface Weight
+    # Diffuse Roughness
     principled_bsdf_4.inputs[7].default_value = 0.0
+    # Subsurface Weight
+    principled_bsdf_4.inputs[8].default_value = 0.0
     # Subsurface Radius
-    principled_bsdf_4.inputs[8].default_value = (
+    principled_bsdf_4.inputs[9].default_value = (
         1.0,
         0.20000000298023224,
         0.10000000149011612,
     )
     # Subsurface Scale
-    principled_bsdf_4.inputs[9].default_value = 0.05000000074505806
+    principled_bsdf_4.inputs[10].default_value = 0.05000000074505806
     # Subsurface Anisotropy
-    principled_bsdf_4.inputs[11].default_value = 0.0
+    principled_bsdf_4.inputs[12].default_value = 0.0
     # Specular IOR Level
-    principled_bsdf_4.inputs[12].default_value = 0.5
+    principled_bsdf_4.inputs[13].default_value = 0.5
     # Specular Tint
-    principled_bsdf_4.inputs[13].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf_4.inputs[14].default_value = (1.0, 1.0, 1.0, 1.0)
     # Anisotropic
-    principled_bsdf_4.inputs[14].default_value = 0.0
-    # Anisotropic Rotation
     principled_bsdf_4.inputs[15].default_value = 0.0
+    # Anisotropic Rotation
+    principled_bsdf_4.inputs[16].default_value = 0.0
     # Tangent
-    principled_bsdf_4.inputs[16].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf_4.inputs[17].default_value = (0.0, 0.0, 0.0)
     # Transmission Weight
-    principled_bsdf_4.inputs[17].default_value = 0.0
-    # Coat Weight
     principled_bsdf_4.inputs[18].default_value = 0.0
+    # Coat Weight
+    principled_bsdf_4.inputs[19].default_value = 0.0
     # Coat Roughness
-    principled_bsdf_4.inputs[19].default_value = 0.029999999329447746
+    principled_bsdf_4.inputs[20].default_value = 0.029999999329447746
     # Coat IOR
-    principled_bsdf_4.inputs[20].default_value = 1.5
+    principled_bsdf_4.inputs[21].default_value = 1.5
     # Coat Tint
-    principled_bsdf_4.inputs[21].default_value = (1.0, 1.0, 1.0, 1.0)
+    principled_bsdf_4.inputs[22].default_value = (1.0, 1.0, 1.0, 1.0)
     # Coat Normal
-    principled_bsdf_4.inputs[22].default_value = (0.0, 0.0, 0.0)
+    principled_bsdf_4.inputs[23].default_value = (0.0, 0.0, 0.0)
     # Sheen Weight
-    principled_bsdf_4.inputs[23].default_value = 0.0
+    principled_bsdf_4.inputs[24].default_value = 0.0
     # Sheen Roughness
-    principled_bsdf_4.inputs[24].default_value = 0.5
+    principled_bsdf_4.inputs[25].default_value = 0.5
     # Sheen Tint
-    principled_bsdf_4.inputs[25].default_value = (1.0, 1.0, 1.0, 1.0)
-    # Emission Color
     principled_bsdf_4.inputs[26].default_value = (1.0, 1.0, 1.0, 1.0)
+    # Emission Color
+    principled_bsdf_4.inputs[27].default_value = (1.0, 1.0, 1.0, 1.0)
     # Emission Strength
-    principled_bsdf_4.inputs[27].default_value = 0.0
-    # Thin Film Thickness
     principled_bsdf_4.inputs[28].default_value = 0.0
+    # Thin Film Thickness
+    principled_bsdf_4.inputs[29].default_value = 0.0
     # Thin Film IOR
-    principled_bsdf_4.inputs[29].default_value = 1.3300000429153442
+    principled_bsdf_4.inputs[30].default_value = 1.3300000429153442
 
     # node Math
     math_4 = rockshader.nodes.new("ShaderNodeMath")
@@ -4045,6 +4064,7 @@ def lunarsurface_node_group():
         lunarsurface.nodes.remove(node)
     lunarsurface.color_tag = "NONE"
     lunarsurface.description = ""
+    lunarsurface.default_group_node_width = 140
 
     # lunarsurface interface
 

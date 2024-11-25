@@ -1,4 +1,5 @@
 import bpy
+import mathutils
 
 
 # initialize random__normal_ node group
@@ -9,6 +10,7 @@ def random__normal__node_group():
 
     random__normal_.color_tag = "NONE"
     random__normal_.description = ""
+    random__normal_.default_group_node_width = 140
 
     # random__normal_ interface
     # Socket Value
@@ -285,6 +287,7 @@ def random__uniform__node_group():
 
     random__uniform_.color_tag = "NONE"
     random__uniform_.description = ""
+    random__uniform_.default_group_node_width = 140
 
     # random__uniform_ interface
     # Socket Value
@@ -381,6 +384,7 @@ def martianrock_node_group():
 
     martianrock.color_tag = "GEOMETRY"
     martianrock.description = ""
+    martianrock.default_group_node_width = 140
 
     martianrock.is_modifier = True
 
@@ -599,6 +603,7 @@ def martianrock_node_group():
     # node Reroute.001
     reroute_001 = martianrock.nodes.new("NodeReroute")
     reroute_001.name = "Reroute.001"
+    reroute_001.socket_idname = "NodeSocketFloat"
     # node Transform Geometry
     transform_geometry = martianrock.nodes.new("GeometryNodeTransform")
     transform_geometry.name = "Transform Geometry"
@@ -611,6 +616,7 @@ def martianrock_node_group():
     # node Reroute.002
     reroute_002 = martianrock.nodes.new("NodeReroute")
     reroute_002.name = "Reroute.002"
+    reroute_002.socket_idname = "NodeSocketInt"
     # node Attribute Statistic
     attribute_statistic = martianrock.nodes.new("GeometryNodeAttributeStatistic")
     attribute_statistic.name = "Attribute Statistic"
@@ -632,6 +638,7 @@ def martianrock_node_group():
     # node Reroute.003
     reroute_003 = martianrock.nodes.new("NodeReroute")
     reroute_003.name = "Reroute.003"
+    reroute_003.socket_idname = "NodeSocketGeometry"
     # node Vector Math.002
     vector_math_002 = martianrock.nodes.new("ShaderNodeVectorMath")
     vector_math_002.name = "Vector Math.002"
@@ -745,6 +752,7 @@ def martianrock_node_group():
     # node Reroute.005
     reroute_005 = martianrock.nodes.new("NodeReroute")
     reroute_005.name = "Reroute.005"
+    reroute_005.socket_idname = "NodeSocketFloat"
     # node Group.003
     group_003 = martianrock.nodes.new("GeometryNodeGroup")
     group_003.name = "Group.003"
@@ -774,9 +782,11 @@ def martianrock_node_group():
     # node Reroute.006
     reroute_006 = martianrock.nodes.new("NodeReroute")
     reroute_006.name = "Reroute.006"
+    reroute_006.socket_idname = "NodeSocketFloat"
     # node Reroute
     reroute = martianrock.nodes.new("NodeReroute")
     reroute.name = "Reroute"
+    reroute.socket_idname = "NodeSocketVectorXYZ"
     # node Group.007
     group_007 = martianrock.nodes.new("GeometryNodeGroup")
     group_007.name = "Group.007"
@@ -979,6 +989,7 @@ def martianrock_node_group():
     # node Reroute.010
     reroute_010 = martianrock.nodes.new("NodeReroute")
     reroute_010.name = "Reroute.010"
+    reroute_010.socket_idname = "NodeSocketBool"
     # node Cube.001
     cube_001 = martianrock.nodes.new("GeometryNodeMeshCube")
     cube_001.name = "Cube.001"
@@ -1002,6 +1013,7 @@ def martianrock_node_group():
     # node Reroute.004
     reroute_004 = martianrock.nodes.new("NodeReroute")
     reroute_004.name = "Reroute.004"
+    reroute_004.socket_idname = "NodeSocketGeometry"
     # node Frame.004
     frame_004 = martianrock.nodes.new("NodeFrame")
     frame_004.name = "Frame.004"
@@ -1011,9 +1023,11 @@ def martianrock_node_group():
     # node Reroute.012
     reroute_012 = martianrock.nodes.new("NodeReroute")
     reroute_012.name = "Reroute.012"
+    reroute_012.socket_idname = "NodeSocketFloatDistance"
     # node Reroute.013
     reroute_013 = martianrock.nodes.new("NodeReroute")
     reroute_013.name = "Reroute.013"
+    reroute_013.socket_idname = "NodeSocketFloatDistance"
     # node Transform Geometry.003
     transform_geometry_003 = martianrock.nodes.new("GeometryNodeTransform")
     transform_geometry_003.name = "Transform Geometry.003"
@@ -1060,6 +1074,7 @@ def martianrock_node_group():
     # node Reroute.015
     reroute_015 = martianrock.nodes.new("NodeReroute")
     reroute_015.name = "Reroute.015"
+    reroute_015.socket_idname = "NodeSocketFloat"
     # node Separate XYZ
     separate_xyz = martianrock.nodes.new("ShaderNodeSeparateXYZ")
     separate_xyz.name = "Separate XYZ"
@@ -1071,21 +1086,27 @@ def martianrock_node_group():
     # node Reroute.017
     reroute_017 = martianrock.nodes.new("NodeReroute")
     reroute_017.name = "Reroute.017"
+    reroute_017.socket_idname = "NodeSocketVectorXYZ"
     # node Reroute.018
     reroute_018 = martianrock.nodes.new("NodeReroute")
     reroute_018.name = "Reroute.018"
+    reroute_018.socket_idname = "NodeSocketVectorXYZ"
     # node Reroute.019
     reroute_019 = martianrock.nodes.new("NodeReroute")
     reroute_019.name = "Reroute.019"
+    reroute_019.socket_idname = "NodeSocketVectorXYZ"
     # node Reroute.020
     reroute_020 = martianrock.nodes.new("NodeReroute")
     reroute_020.name = "Reroute.020"
+    reroute_020.socket_idname = "NodeSocketFloat"
     # node Reroute.021
     reroute_021 = martianrock.nodes.new("NodeReroute")
     reroute_021.name = "Reroute.021"
+    reroute_021.socket_idname = "NodeSocketBool"
     # node Reroute.022
     reroute_022 = martianrock.nodes.new("NodeReroute")
     reroute_022.name = "Reroute.022"
+    reroute_022.socket_idname = "NodeSocketFloatDistance"
     # node Frame.005
     frame_005 = martianrock.nodes.new("NodeFrame")
     frame_005.name = "Frame.005"

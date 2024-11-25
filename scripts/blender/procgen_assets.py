@@ -1,4 +1,4 @@
-#!/usr/bin/env -S blender --factory-startup --background --offline-mode --enable-autoexec --python-exit-code 1 --python
+#!/usr/bin/env -S blender --factory-startup --background --enable-autoexec --python-exit-code 1 --python
 """
 Script for automated procedural asset generation using Blender that revolves around its rich
 node-based system for geometry (Geometry Nodes) and materials (Shader Nodes).
@@ -118,8 +118,19 @@ class ProceduralGenerator:
             node_group_input_socket_maps=node_group_input_socket_maps,
         )
 
+        should_bake_material = material is not None
+        if not should_bake_material:
+            for node_group_inputs in geometry_nodes.values():
+                for value in node_group_inputs.values():
+                    if isinstance(value, str) and value.startswith("MAT:"):
+                        should_bake_material = True
+                        break
+                else:
+                    continue
+                break
+
         # Preheat the oven for baking the material into PBR textures
-        if material:
+        if should_bake_material:
             ProceduralGenerator.Baker.preheat_oven(render_samples=render_samples)
 
         # Prepare the scene for rendering the thumbnail
@@ -164,10 +175,11 @@ class ProceduralGenerator:
                 bpy.ops.object.modifier_apply(modifier=modifier.name)
 
             # If specified, bake the material into PBR textures
-            if material:
+            if should_bake_material:
                 obj.hide_render = False
-                obj.data.materials.clear()
-                obj.data.materials.append(bpy.data.materials.get(material))
+                if material:
+                    obj.data.materials.clear()
+                    obj.data.materials.append(bpy.data.materials.get(material))
                 ProceduralGenerator.Baker.bake_into_pbr_material(
                     obj=obj, texture_resolution=texture_resolution
                 )
@@ -287,7 +299,16 @@ class ProceduralGenerator:
                 socket_id = node_group_input_socket_maps[node_group_name][
                     canonicalize_str(key)
                 ]
-                modifier[socket_id] = value
+                if isinstance(value, str) and value.startswith("MAT:"):
+                    material_name = value[4:]
+                    material = bpy.data.materials.get(material_name)
+                    if not material:
+                        raise ValueError(
+                            f"Material '{material_name}' not found in the list of available materials: {bpy.data.materials.keys()}"
+                        )
+                    modifier[socket_id] = material
+                else:
+                    modifier[socket_id] = value
 
         # Apply changes via mesh update
         obj.data.update()
@@ -478,7 +499,7 @@ class ProceduralGenerator:
             match self:
                 case self.ALBEDO:
                     if orig_metallic_default_value or orig_metallic_from_socket:
-                        metallic_socket = (
+                        link = (
                             [
                                 node
                                 for node in material.node_tree.nodes
@@ -486,9 +507,11 @@ class ProceduralGenerator:
                             ][0]
                             .inputs["Surface"]
                             .links[0]
-                            .inputs["Metallic"]
                         )
-                        metallic_socket.default_value = orig_metallic_default_value
+                        # TODO: Fix this ugly hack
+                        if hasattr(link, "inputs"):
+                            metallic_socket = link.inputs["Metallic"]
+                            metallic_socket.default_value = orig_metallic_default_value
                     if orig_metallic_from_socket:
                         material.node_tree.links.new(
                             orig_metallic_from_socket,
@@ -555,7 +578,7 @@ class ProceduralGenerator:
                 cls._unwrap_uv_on_active_obj(obj, texture_resolution)
 
             # Get the material
-            material = obj.data.materials[0]
+            material = obj.data.materials[-1]
 
             # Bake all textures from the recipe
             baked_textures = {}
@@ -1129,7 +1152,7 @@ def print_bpy(msg: Any, file: Optional[TextIO] = sys.stdout, *args, **kwargs):
 
 
 def verify_requirements():
-    VERSION_BPY_MIN: Tuple[int, int] = (4, 2)
+    VERSION_BPY_MIN: Tuple[int, int] = (4, 3)
     if (
         bpy.app.version[0] != VERSION_BPY_MIN[0]
         or bpy.app.version[1] < VERSION_BPY_MIN[1]

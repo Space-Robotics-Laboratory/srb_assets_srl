@@ -1,4 +1,5 @@
 import bpy
+import mathutils
 
 
 # initialize blankmodule node group
@@ -7,6 +8,7 @@ def blankmodule_node_group():
 
     blankmodule.color_tag = "NONE"
     blankmodule.description = ""
+    blankmodule.default_group_node_width = 140
 
     blankmodule.is_modifier = True
 
