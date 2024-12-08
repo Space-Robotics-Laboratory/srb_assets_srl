@@ -5,3 +5,6 @@
 **/*.py[cod]
 **/*.pyc
 **/*$py.class
+
+## SRL
+**/limbero
